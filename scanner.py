@@ -4,7 +4,7 @@ import socket
 import json
 
 
-# Check if a device is reachable (ping)
+#(ping)
 def is_host_alive(ip):
     try:
         result = subprocess.run(
@@ -16,7 +16,7 @@ def is_host_alive(ip):
         return False
 
 
-# Scan common ports on a live host
+# Scan common ports in live host
 def scan_open_ports(ip):
     open_ports = []
     common_ports = [22, 80, 443, 21, 25, 3306, 8080]
@@ -34,7 +34,7 @@ def scan_open_ports(ip):
     return open_ports
 
 
-# ---------------- MAIN PROGRAM ---------------- #
+# main
 
 print("\nSimple Network Scanner - Security Assessment Tool\n")
 
@@ -56,12 +56,12 @@ for ip in network.hosts():
         print(f"[-] {ip} is not reachable")
 
 
-# Save results in JSON format
+# results in JSON format
 with open("scan_results.json", "w") as json_file:
     json.dump(scan_results, json_file, indent=4)
 
 
-# Generate Markdown report
+# Markdown report
 with open("scan_report.md", "w") as report:
     report.write("# Network Security Scan Report\n\n")
     report.write(f"**Scanned Subnet:** `{subnet}`\n\n")
